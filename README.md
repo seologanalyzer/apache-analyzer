@@ -13,9 +13,9 @@ Add after *DocumentRoot* :
     SetEnvIf User-Agent "bingbot/2.0" sla
     SetEnvIf Referer "google.*q=" sla
     SetEnvIf Referer "bing.*q=" sla
-    CustomLog "|/var/www/www.xxx.com/sla/logger" slacombined env=sla
+    CustomLog "|/var/www/example.com/sla/logger/index.php" slacombined env=sla
 
-Then CHMOD 777 on /var/www/www.xxx.com/sla/logger/index.php
+Then CHMOD 777 on /var/www/example.com/sla/logger/index.php
 	
 ## Directive LogFormat Apache logs
 
