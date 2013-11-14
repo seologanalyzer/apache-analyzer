@@ -8,13 +8,15 @@ Edit virtualhost (*/etc/apache2/sites-available/*)
 
 Add after *DocumentRoot* :
 
-    LogFormat "%h:::%>s:::%b:::%D:::\"%{Referer}i\":::\"%{User-agent}i\":::\"%V\"\"%r\"" slacombined
+    LogFormat "%h:::%>s:::%b:::%D:::%{Referer}i:::%{User-agent}i:::%V%r" slacombined
     SetEnvIf User-Agent "Googlebot/2.1" sla
     SetEnvIf User-Agent "bingbot/2.0" sla
     SetEnvIf Referer "google.*q=" sla
     SetEnvIf Referer "bing.*q=" sla
     CustomLog "|/var/www/www.xxx.com/sla/logger" slacombined env=sla
 
+Then CHMOD 777 on /var/www/www.xxx.com/sla/logger/index.php
+	
 ## Directive LogFormat Apache logs
 
 - %h = Ip
